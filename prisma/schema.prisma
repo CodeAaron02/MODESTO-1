@@ -1,0 +1,38 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+enum BookStatus {
+  pending
+  completed
+}
+
+model User {
+  id       String @id @default(auto()) @map("_id") @db.ObjectId
+  name     String
+  email    String @unique
+  password String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Book {
+  id          String     @id @default(auto()) @map("_id") @db.ObjectId
+  name        String
+  email       String
+  phoneNumber String
+  packages    String
+  price       Int
+  date        String
+  status      BookStatus @default(pending)
+  isConfirm   Boolean    @default(false)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
