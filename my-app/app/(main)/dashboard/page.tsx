@@ -3,7 +3,10 @@ import { Dashboard } from "./_components/dashboard";
 import { getConfirmBooks, getNotConfirmBooks, getTotals } from "@/lib/booking";
 import { PendingReservation } from "./_components/pending-reservation";
 import { RecentReservations } from "./_components/recent-reservations";
-import { Analytics } from "./_components/analytics";
+import dynamic from "next/dynamic";
+const Analytics = dynamic(() => import("./_components/analytics"), {
+  ssr: false,
+});
 
 const DashboardPage = async () => {
   const totals = await getTotals();

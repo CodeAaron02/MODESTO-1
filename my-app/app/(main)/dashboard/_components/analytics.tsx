@@ -38,7 +38,7 @@ interface AnalyticsProp {
   };
 }
 
-export const Analytics = ({ totals }: AnalyticsProp) => {
+const Analytics = ({ totals }: AnalyticsProp) => {
   const totalSales = totals.completed?.reduce(
     (accumulator, item) => accumulator + item.price,
     0
@@ -160,3 +160,5 @@ export const Analytics = ({ totals }: AnalyticsProp) => {
     </div>
   );
 };
+
+export default Analytics;
